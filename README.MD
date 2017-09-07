@@ -47,4 +47,4 @@ API: /api/wake/:room
 
 API: /api/github/:room
 
-Chat message on repo push
+Emits a chat message on repo push
