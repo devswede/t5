@@ -139,7 +139,7 @@ module.exports = require("express");
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(__dirname) {
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -178,7 +178,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 
 router.get('/display', function (req, res, next) {
-	res.sendFile('../views/display/index');
+	res.sendFile(__dirname + '/routes/index.html');
 });
 
 router.get('/', function (req, res) {
@@ -243,6 +243,7 @@ function renderFullPage(html, initialState) {
 }
 
 exports.default = router;
+/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
 /* 7 */
