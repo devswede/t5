@@ -6,6 +6,7 @@ const express = require('express'),
 
 app.use('/bin', express.static('./bin'));
 app.use('/stylesheets', express.static('./public/stylesheets'));
+app.use('/images', express.static('./public/images'));
 
 app.use('/', router);
 app.use('/view/*', router);

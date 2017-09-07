@@ -10,6 +10,10 @@ router.get('/control', (req, res, next) => {
   res.sendFile(__dirname + '/control.html');
 });
 
+router.get('/team', (req, res, next) => {
+  res.sendFile(__dirname + '/team.html');
+});
+
 router.get('/api/wake/:room', (req, res, next) => {
   router.io.to(req.params.room).emit('wake');
   console.log(`API - Wake to ${req.params.room}`);
