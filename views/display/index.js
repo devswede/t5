@@ -21,9 +21,10 @@ $(function() {
   });
 
   function updateQR() {
+    var controlUrl = window.location.origin + '/control?room=' + room;
     var qr = new QRious({
       element: document.getElementById('qr'),
-      value: 'https://github.com/neocotic/qrious'
+      value: controlUrl
     });
   }
 
