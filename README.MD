@@ -5,7 +5,8 @@
 GET /display?room=team5
 
 ```javascript
-var socket = io('team5');
+var socket = io();
+socket.join('team5');
 socket.on('stoplight', function(color){
   console.log(color);
 });
@@ -14,3 +15,9 @@ socket.on('stoplight', function(color){
 ## Admin GUI
 
 GET /control?room=team5
+
+```javascript
+var socket = io();
+socket.join('team5');
+socket.to('team5').emit('stoplight', 'red');
+```
