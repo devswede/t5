@@ -26,5 +26,13 @@
         "url": "/images/kibana.png"
       }
     ]
+  },
+  "in5": {
+    "iframes": [
+      {
+        "label": "Startsidan",
+        "url": "/insidan"
+      }
+    ]
   }
 }
