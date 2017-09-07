@@ -6,21 +6,21 @@ $(function() {
       messages = $('.js-message'),
       urlBtnContainer = $('.url-btn-container'),
       dimmer = $('.dimmer'),
-      room = new URLSearchParams(window.location.search).get('room'),
+      screen = new URLSearchParams(window.location.search).get('screen'),
       msgForm = $('.js-msg-form'),
       screenTimeout,
       screenTimeOutDelay = 45000;
 
-  if (room === 'team5') {
+  if (screen === 'team5') {
     document.title = 'Styr extern skärm - Team 5'
-  } else if (room === 'in5') {
+  } else if (screen === 'in5') {
     document.title = 'Styr intern skärm - Team 5'
   }
 
   screenTimeout = setTimeout(onScreenTimeout, screenTimeOutDelay);
 
   socket.on('connect', () => {
-    socket.emit('join', room);
+    socket.emit('join', screen);
   });
 
   socket.on('wake', resetDimmerTimer);
@@ -71,7 +71,7 @@ $(function() {
       newBtn.html(config.iframes[i].label);
       newBtn.removeClass('hide');
       newBtn.on('click', (e) => {
-        socket.emit('iframe', $(e.target).data('url'));
+        socket.emit('iframe', {screen: screen, url: $(e.target).data('url')});
       });
 
       urlBtnContainer.append(newBtn);

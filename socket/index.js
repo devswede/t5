@@ -1,19 +1,25 @@
 
 const path = require('path'),
-      colors = ['red', 'yellow', 'green'],
+      screens = {},
       rooms = {},
-      configs = require(path.join(process.cwd(), 'rooms.json'));
+      configs = require(path.join(process.cwd(), 'screens.json'));
+
 
 function Room() {
   let color = 'green',
-      url = 'http://www.svt.se';
-
+      messages = [];
   return {
     color: color,
-    url: url,
     messages: []
   };
-};
+}
+
+function Screen() {
+  let url = 'http://www.svt.se';
+  return {
+    url: url
+  };
+}
 
 module.exports = function(io) {
 
@@ -25,33 +31,33 @@ module.exports = function(io) {
       console.log('Client disconnected: ' + client.id);
     });
 
-    client.on('join', (room) => {
+    client.on('join', (screenName) => {
+      let roomName = configs[screenName] ? configs[screenName].room : 'default';
 
-      if (!rooms[room]) {
-        console.log('Room created: ' + room);
-        rooms[room] = new Room();
-        if (configs[room]) {
-          rooms[room].url = configs[room].iframes[0].url;
+      if (!screens[screenName]) {
+        let screen = new Screen();
+        if (configs[screenName]) {
+          screen.url = configs[screenName].iframes[0].url;
+        }
+        screens[screenName] = screen;
+        console.log('Screen created: ' + screenName);
+        if (!rooms[roomName]) {
+          rooms[roomName] = new Room();
+          console.log('Room created: ' + roomName);
         }
       }
 
       //Send current state to newly connected client
-      if (configs[room]) {
-        client.join(configs[room].room);
-        console.log(client.id + ' joined ' + configs[room].room);
-        client.emit('state', rooms[room]);
-        client.emit('config', configs[room]);
-      } else {
-        client.emit('state', rooms[room]);
-        client.emit('config', configs['default']);
-
-      }
+      client.join(roomName);
+      console.log(client.id + ' joined ' + roomName);
+      client.emit('state', Object.assign({screen: screenName}, screens[screenName], rooms[roomName]));
+      client.emit('config', configs[screenName]);
 
     });
 
-    client.on('leave', (room) => {
-      client.leave(room);
-      console.log(client.id + ' left ' + room);
+    client.on('leave', (screenName) => {
+      client.leave(configs[screenName].room);
+      console.log(client.id + ' left ' + configs[screenName].room);
     });
 
     client.on('stoplight', function(color){
@@ -86,15 +92,15 @@ module.exports = function(io) {
       }
     });
 
-    client.on('iframe', function(url){
+    client.on('iframe', function(iframe){
       for (let room in client.rooms) {
         if (room !== client.id) {
-          if (!rooms[room]) {
-            rooms[room] = new Room();
+          if (!screens[iframe.screen]) {
+            screens[iframe.screen] = new Screen();
           }
-          rooms[room].url = url;
-          io.to(room).emit('iframe', url);
-          console.log(client.id + ' sets iframe ' + url + ' for room ' + room);
+          screens[iframe.screen].url = iframe.url;
+          io.to(room).emit('iframe', iframe);
+          console.log(client.id + ' sets iframe ' + iframe.url + ' for screen ' + iframe.screen);
         }
       }
     });

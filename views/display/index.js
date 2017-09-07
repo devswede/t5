@@ -5,24 +5,24 @@ $(function() {
       allLights = $('.light'),
       iframe = $('.display-iframe'),
       chat = $('.js-chat'),
-      room = new URLSearchParams(window.location.search).get('room');
+      screen = new URLSearchParams(window.location.search).get('screen');
 
 
-  if (room === 'team5') {
+  if (screen === 'team5') {
     document.title = 'Team 5 - Extern'
-  } else if (room === 'in5') {
+  } else if (screen === 'in5') {
     document.title = 'Team 5 - Intern'
   }
 
   socket.on('connect', function() {
-    socket.emit('join', room);
+    socket.emit('join', screen);
   });
 
   socket.on('iframe', updateIframeSource);
   socket.on('stoplight', updateLight);
 
   socket.on('state', state => {
-    updateIframeSource(state.url);
+    updateIframeSource(state);
     updateLight(state.color);
     updateQR();
   });
@@ -32,7 +32,7 @@ $(function() {
   //});
 
   function updateQR() {
-    var controlUrl = window.location.origin + '/control?room=' + room;
+    var controlUrl = window.location.origin + '/control?screen=' + screen;
     var qr = new QRious({
       element: document.getElementById('qr'),
       value: controlUrl,
@@ -53,8 +53,10 @@ $(function() {
     }
   }
 
-  function updateIframeSource(url) {
-    iframe.attr('src', url)
+  function updateIframeSource(msg) {
+    if (msg.screen === screen) {
+      iframe.attr('src', msg.url)
+    }
   }
 
 }());
