@@ -2,6 +2,7 @@ const webpack = require('webpack');
 var nodeExternals = require('webpack-node-externals');
 
 module.exports = [
+    /*
     {
         entry: './views/index.js',
         output: {
@@ -19,7 +20,7 @@ module.exports = [
         }
 
     }
-  ,
+  ,*/
   {
     entry: './views/display/index.js',
     output: {
