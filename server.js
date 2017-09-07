@@ -6,6 +6,7 @@ const express = require('express'),
 		  io = require('socket.io')(http);
 
 app.set('view engine', 'hbs');
+app.set('views', process.cwd() + '/routes/hbs');
 
 //Middleware
 app.use(bodyParser.json());

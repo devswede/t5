@@ -3,29 +3,38 @@ const express = require('express');
 let router = express.Router();
 
 router.get('/', (req, res, next) => {
-  res.sendFile(__dirname + '/root.html');
+  res.render('index');
 });
 
 router.get('/display', (req, res, next) => {
-	res.sendFile(__dirname + '/index.html');
+  res.render('display');
 });
 
 router.get('/control', (req, res, next) => {
-  res.sendFile(__dirname + '/control.html');
+  res.render('control');
 });
 
+/*
+Extern skärm frames
+ */
 router.get('/team', (req, res, next) => {
-  res.sendFile(__dirname + '/team.html');
+  res.render('frames/team');
 });
 
 router.get('/start', (req,res,next) => {
-  res.sendFile(__dirname + '/start.html');
+  res.render('frames/start');
 });
 
+/*
+Intern skärm frames
+ */
 router.get('/insidan', (req,res,next) => {
-  res.sendFile(__dirname + '/insidan.html');
+  res.render('frames/insidan');
 });
 
+/*
+ API's
+ */
 router.get('/api/wake/:room', (req, res, next) => {
   router.io.to(req.params.room).emit('wake');
   console.log(`API - Wake to ${req.params.room}`);
@@ -44,6 +53,5 @@ router.post('/api/github/:room', (req, res, next) => {
   console.log(`API - GitHub web hook triggered (${msg})`);
   res.sendStatus(200, 'OK');
 });
-
 
 module.exports = router;
