@@ -7,15 +7,10 @@ const express = require('express'),
 app.use('/bin', express.static('./bin'));
 app.use('/stylesheets', express.static('./public/stylesheets'));
 
-
 app.use('/', router);
 app.use('/view/*', router);
 
-io.on('connection', function(client){
-  client.on('event', function(data){});
-  client.on('disconnect', function(){});
-});
-
+io.on('connection', require('./socket')(io));
 
 http.listen(3000, function () {
 	console.log('Hello World listening on port 3000!');
