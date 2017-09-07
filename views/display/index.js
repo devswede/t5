@@ -3,7 +3,13 @@ $(function() {
       redLight = $('.red'),
       yellowLight = $('.yellow'),
       greenLight = $('.green'),
-      allLights = $('.light');
+      allLights = $('.light'),
+      room = new URLSearchParams(window.location.search).get('room');
+
+  socket.on('connect', function() {
+    socket.emit('join', room);
+  });
+
   socket.on('stoplight', color => {
     allLights.removeClass('light-up');
     switch(color) {
