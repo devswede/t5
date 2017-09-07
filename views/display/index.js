@@ -7,6 +7,13 @@ $(function() {
       chat = $('.js-chat'),
       room = new URLSearchParams(window.location.search).get('room');
 
+
+  if (room === 'team5') {
+    document.title = 'Team 5 - Extern'
+  } else if (room === 'in5') {
+    document.title = 'Team 5 - Intern'
+  }
+
   socket.on('connect', function() {
     socket.emit('join', room);
   });

@@ -11,6 +11,12 @@ $(function() {
       screenTimeout,
       screenTimeOutDelay = 45000;
 
+  if (room === 'team5') {
+    document.title = 'Styr extern skärm - Team 5'
+  } else if (room === 'in5') {
+    document.title = 'Styr intern skärm - Team 5'
+  }
+
   screenTimeout = setTimeout(onScreenTimeout, screenTimeOutDelay);
 
   socket.on('connect', () => {
@@ -58,7 +64,7 @@ $(function() {
     } else {
       messages.addClass('hide');
     }
-    
+
     for(i = 0; i < config.iframes.length; i++) {
       newBtn = dummyBtn.clone();
       newBtn.attr('data-url', config.iframes[i].url);
