@@ -37,4 +37,22 @@ module.exports = [
     }
 
   }
+  ,
+  {
+    entry: './views/control/index.js',
+    output: {
+      path: __dirname + '/bin',
+      filename: 'control.bundle.js',
+    },
+    module: {
+      loaders: [{
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-1']
+        }
+      }]
+    }
+
+  }
 ]

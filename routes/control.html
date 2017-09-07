@@ -10,15 +10,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Display - Woooowww!</title>
+  <title>Controller - Woooowww!</title>
 </head>
 <body>
-  <div class="traffic-light">
-    <div class="light red"></div>
-    <div class="light yellow"></div>
-    <div class="light green"></div>
-  </div>
+  <button class="light-button btn-red" data-color="red">Röd</button>
+  <button class="light-button btn-yellow" data-color="yellow">Gul</button>
+  <button class="light-button btn-green" data-color="green">Grön</button>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/bin/display.bundle.js"></script>
+  <script src="/bin/control.bundle.js"></script>
 </body>
 </html>
