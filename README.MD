@@ -1,14 +1,25 @@
 # Team Dash
 
+## Joining a dash
+
+```javascript
+var socket = io(),
+    room = 'team5';
+socket.on('connect', function() {
+  socket.join(v);
+});
+```
+
 ## Display
 
 GET /display?room=team5
 
 ```javascript
-var socket = io();
-socket.join('team5');
 socket.on('stoplight', function(color){
   console.log(color);
+});
+socket.on('iframe', function(url){
+  console.log(url);
 });
 ```
 
@@ -17,13 +28,7 @@ socket.on('stoplight', function(color){
 GET /control?room=team5
 
 ```javascript
-var socket = io();
-socket.join('team5');
-socket.to('team5').emit('stoplight', 'red');
-```
+socket.to(room).emit('stoplight', 'red');
 
-```javascript
-var socket = io();
-socket.join('team5');
-socket.to('team5').emit('news', {tile: 'Senaste', body: 'Nothing'});
+socket.to(room).emit('iframe', 'http://www.svt.se');
 ```

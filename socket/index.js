@@ -37,6 +37,13 @@ module.exports = function(io) {
       console.log('New color: ' + color);
     });
 
+    client.on('iframe', function(url){
+      for (let room in client.rooms) {
+        io.to(room).emit('iframe', url);
+      }
+      console.log('iframe: ' + url);
+    });
+
   };
 
 };
