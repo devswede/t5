@@ -1,5 +1,6 @@
 {
   "default": {
+    "room": "team0",
     "iframes": [
       {
         "label": "svenskaspel.se",
@@ -8,6 +9,7 @@
     ]
   },
   "team5": {
+    "room": "team5",
     "iframes": [
       {
         "label": "Startsidan",
@@ -25,6 +27,7 @@
     "chat": true
   },
   "in5": {
+    "room": "team5",
     "iframes": [
       {
         "label": "Startsidan",
