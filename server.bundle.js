@@ -177,6 +177,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var router = _express2.default.Router();
 
+router.get('/display', function (req, res, next) {
+	res.send('display');
+});
+
 router.get('/', function (req, res) {
 	/*
  Here we are first matching if the current url exists in the react router routes
@@ -257,16 +261,26 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//var displayFn = require('./routes/display');
 var app = (0, _express2.default)();
 
 app.use('/bin', _express2.default.static('./bin'));
 app.use('/stylesheets', _express2.default.static('./public/stylesheets'));
 
+//app.get('/display', displayFn);
+
 app.use('/', _index2.default);
 app.use('/view/*', _index2.default);
 
+/*const io = require('socket.io')(app);
+io.on('connection', function(client){
+  client.on('event', function(data){});
+  client.on('disconnect', function(){});
+});
+*/
+
 app.listen(3000, function () {
-	console.log('Hello World listening on port 3000!');
+  console.log('Hello World listening on port 3000!');
 });
 
 /***/ }),

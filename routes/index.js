@@ -10,6 +10,10 @@ import { ADD_ITEM } from '../views/src/actions/list_actions';
 
 let router = express.Router();
 
+router.get('/display', (req, res, next) => {
+	res.send('display');
+});
+
 router.get('/', (req, res) => {
     /*
     Here we are first matching if the current url exists in the react router routes

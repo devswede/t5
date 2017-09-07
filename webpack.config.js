@@ -47,17 +47,24 @@ module.exports = [
                 }
             }]
         }
-        //If you want to minify your files uncomment this
-        // ,
-        // plugins: [
-        //     new webpack.optimize.UglifyJsPlugin({
-        //         compress: {
-        //             warnings: false,
-        //         },
-        //         output: {
-        //             comments: false,
-        //         },
-        //     }),
-        // ]
+
     }
+  ,
+  {
+    entry: './views/display/index.js',
+    output: {
+      path: __dirname + '/bin',
+      filename: 'display.bundle.js',
+    },
+    module: {
+      loaders: [{
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-1']
+        }
+      }]
+    }
+
+  }
 ]
