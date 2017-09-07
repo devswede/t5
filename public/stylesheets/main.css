@@ -22,6 +22,11 @@ header {
     padding: 24px;
 }
 
+.display-iframe {
+    width: 100%;
+    min-height: 600px;
+}
+
 .red.light-up {
     background: red;
 }
@@ -41,18 +46,7 @@ header {
     border-radius: 2em;
     z-index: 10;
 }
-.traffic-light::before {
-    content: "";
-    width: 3em;
-    height: 8em;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #eee;
-    background: linear-gradient(top, rgba(240,240,240,0.9), #1acbfc 70%);
-    z-index: 0;
-}
+
 .light {
     width: 6em;
     height: 5.5em;
