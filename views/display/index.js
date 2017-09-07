@@ -30,7 +30,7 @@ $(function() {
     var qr = new QRious({
       element: document.getElementById('qr'),
       value: controlUrl,
-      size: 64
+      size: 80
     });
   }
 
