@@ -19,7 +19,11 @@ body {
 header {
     background: #1A212C;
     color: #fff;
-    padding: 24px;
+    padding: 15px 36px !important;
+}
+
+header h2 {
+    line-height: 98px;
 }
 
 .display-iframe {
@@ -29,6 +33,18 @@ header {
 
 .hide {
     display: none !important;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.align-right {
+    text-align: right;
 }
 
 .red.light-up {
