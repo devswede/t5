@@ -35,6 +35,7 @@ module.exports = function(io) {
     client.on('join', (room) => {
 
       if (!rooms[room]) {
+        console.log('Room created: ' + room);
         rooms[room] = new Room();
       }
       client.join(room);
@@ -60,7 +61,7 @@ module.exports = function(io) {
 
         io.to(room).emit('stoplight', color);
       }
-      console.log('New color: ' + color);
+      console.log('Color: ' + color);
     });
 
     client.on('iframe', function(url){
@@ -73,7 +74,7 @@ module.exports = function(io) {
 
         io.to(room).emit('iframe', url);
       }
-      console.log('iframe: ' + url);
+      console.log('IFrame: ' + url);
     });
 
   };
