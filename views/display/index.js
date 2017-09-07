@@ -1,7 +1,6 @@
 $(function() {
   let socket = io(),
       redLight = $('.red'),
-      yellowLight = $('.yellow'),
       greenLight = $('.green'),
       allLights = $('.light'),
       iframe = $('.display-iframe'),
@@ -21,9 +20,9 @@ $(function() {
     updateQR();
   });
 
-  socket.on('chat', (msg) => {
-    chat.append('<p>' + msg + '</p>')
-  });
+  //socket.on('chat', (msg) => {
+    //chat.append('<p>' + msg + '</p>')
+  //});
 
   function updateQR() {
     var controlUrl = window.location.origin + '/control?room=' + room;
@@ -32,6 +31,7 @@ $(function() {
       value: controlUrl,
       size: 80
     });
+    iframe.height($(window).height() - $('.top-content').height());
   }
 
   function updateLight(color) {
@@ -39,9 +39,6 @@ $(function() {
     switch(color) {
       case 'red':
         redLight.addClass('light-up');
-        break;
-      case 'yellow':
-        yellowLight.addClass('light-up');
         break;
       case 'green':
         greenLight.addClass('light-up');

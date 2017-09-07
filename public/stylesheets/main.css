@@ -23,7 +23,7 @@ header {
 }
 
 header h2 {
-    line-height: 64px;
+    line-height: 78px;
 }
 
 .display-iframe {
@@ -47,35 +47,44 @@ header h2 {
     text-align: right;
 }
 
+.align-center {
+    text-align: center;
+}
+
+
 .red.light-up {
+    display: inline-block !important;
+}
+
+.red.light-up:after {
     background: red;
 }
-.yellow.light-up {
-    background: yellow;
+
+.light:after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    top: 24px;
+    right: -40px;
+    position: absolute;
+    display: inline-block;
+    border-radius: 50%;
+    background: none;
 }
+
 .green.light-up {
+    display: inline-block !important;
+}
+
+.green.light-up:after {
     background: forestgreen;
 }
 
-.traffic-light {
-    margin: 0.5em;
-    height: 11em;
-    width: 5em;
-
-    background: #333;
-    border: 0.5em solid #eee;
-    border-radius: 2em;
-    z-index: 10;
-}
-
 .light {
-    width: 3em;
-    height: 2.75em;
-    background: #000;
-    border-top: 0.1em solid #000;
-    border-radius: 50%;
-    margin: 0.5em auto;
-    transition: background 0.3s;
+    line-height: 78px;
+    position: relative;
+    display: none;
+    font-size: 24px;
 }
 
 .chat {
