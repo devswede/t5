@@ -21,7 +21,8 @@
         "label": "Lite statistik",
         "url": "/images/kibana.png"
       }
-    ]
+    ],
+    "chat": true
   },
   "in5": {
     "iframes": [

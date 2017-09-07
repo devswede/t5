@@ -3,6 +3,7 @@ $(function() {
       colorBtns = $('.light-button'),
       dummyBtn = $('.btn-dummy'),
       stoplight = $('.js-stoplight'),
+      messages = $('.js-message'),
       urlBtnContainer = $('.url-btn-container'),
       dimmer = $('.dimmer'),
       room = new URLSearchParams(window.location.search).get('room'),
@@ -52,6 +53,12 @@ $(function() {
       stoplight.addClass('hide');
     }
 
+    if (config.chat) {
+      messages.removeClass('hide');
+    } else {
+      messages.addClass('hide');
+    }
+    
     for(i = 0; i < config.iframes.length; i++) {
       newBtn = dummyBtn.clone();
       newBtn.attr('data-url', config.iframes[i].url);
