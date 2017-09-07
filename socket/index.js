@@ -34,8 +34,8 @@ module.exports = function(io) {
           rooms[room].url = configs[room].iframes[0].url;
         }
       }
-      client.join(room);
-      console.log(client.id + ' joined ' + room);
+      client.join(configs[room].room);
+      console.log(client.id + ' joined ' + configs[room].room);
 
       //Send current state to newly connected client
       if (configs[room]) {

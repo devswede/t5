@@ -2,6 +2,10 @@ const express = require('express');
 
 let router = express.Router();
 
+router.get('/', (req, res, next) => {
+  res.sendFile(__dirname + '/root.html');
+});
+
 router.get('/display', (req, res, next) => {
 	res.sendFile(__dirname + '/index.html');
 });

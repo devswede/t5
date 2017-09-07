@@ -3,12 +3,19 @@ $(function() {
       colorBtns = $('.light-button'),
       dummyBtn = $('.btn-dummy'),
       stoplight = $('.js-stoplight'),
+      messages = $('.js-message'),
       urlBtnContainer = $('.url-btn-container'),
       dimmer = $('.dimmer'),
       room = new URLSearchParams(window.location.search).get('room'),
       msgForm = $('.js-msg-form'),
       screenTimeout,
       screenTimeOutDelay = 45000;
+
+  if (room === 'team5') {
+    document.title = 'Styr extern skärm - Team 5'
+  } else if (room === 'in5') {
+    document.title = 'Styr intern skärm - Team 5'
+  }
 
   screenTimeout = setTimeout(onScreenTimeout, screenTimeOutDelay);
 
@@ -50,6 +57,12 @@ $(function() {
       stoplight.removeClass('hide');
     } else {
       stoplight.addClass('hide');
+    }
+
+    if (config.chat) {
+      messages.removeClass('hide');
+    } else {
+      messages.addClass('hide');
     }
 
     for(i = 0; i < config.iframes.length; i++) {
