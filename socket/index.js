@@ -1,9 +1,21 @@
 
-const colors = ['red', 'yellow', 'green'];
+const colors = ['red', 'yellow', 'green'],
+      rooms = {};
+
+function Room() {
+  let color = 'green',
+      url = 'http://www.svt.se';
+
+  return {
+    color: color,
+    url: url
+  };
+};
 
 module.exports = function(io) {
 
   let colorIndex = 0;
+
 /*
   setInterval(() => {
     if (colorIndex > 2) colorIndex = 0;
@@ -21,7 +33,15 @@ module.exports = function(io) {
     client.on('disconnect', function(){});
 
     client.on('join', (room) => {
+
+      if (!rooms[room]) {
+        rooms[room] = new Room();
+      }
       client.join(room);
+
+      //Send current state to newly connected client
+      client.emit('state', rooms[room]);
+
       console.log('Client joined ' + room);
     });
 
@@ -32,6 +52,12 @@ module.exports = function(io) {
 
     client.on('stoplight', function(color){
       for (let room in client.rooms) {
+
+        if (!rooms[room]) {
+          rooms[room] = new Room();
+        }
+        rooms[room].color = color;
+
         io.to(room).emit('stoplight', color);
       }
       console.log('New color: ' + color);
@@ -39,6 +65,12 @@ module.exports = function(io) {
 
     client.on('iframe', function(url){
       for (let room in client.rooms) {
+
+        if (!rooms[room]) {
+          rooms[room] = new Room();
+        }
+        rooms[room].url = url;
+
         io.to(room).emit('iframe', url);
       }
       console.log('iframe: ' + url);

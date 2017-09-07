@@ -6,7 +6,8 @@
 var socket = io(),
     room = 'team5';
 socket.on('connect', function() {
-  socket.join(v);
+  socket.on('state', state); //Current room state
+  socket.join(room);
 });
 ```
 
