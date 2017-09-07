@@ -139,12 +139,17 @@ body {
     transition: transform 0.3s ease-out;
 }
 
-.default-left {
+.start .default-left {
     background-image: url('../images/sport.jpg');
     background-size: cover
 }
 
-.default-bottom {
+.insidan .default-left {
+    background-image: url('../images/kibana.png');
+    background-size: cover
+}
+
+.start .default-bottom {
     background-image: url('../images/kibana_small.jpg');
     background-size: cover;
 }
@@ -158,7 +163,7 @@ body {
     height: 50vh;
 }
 
-.default-top {
+.start .default-top {
     padding: 20px;
     margin-bottom: 20px;
     background: #3E606F;
