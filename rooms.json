@@ -1,0 +1,30 @@
+{
+  "default": {
+    "iframes": [
+      {
+        "label": "SVT",
+        "url": "http://www.svt.se"
+      },
+      {
+        "label": "Kibana",
+        "url": "http://kibana.svenskaspel.se"
+      }
+    ]
+  },
+  "team5": {
+    "iframes": [
+      {
+        "label": "SVT",
+        "url": "http://www.svt.se"
+      },
+      {
+        "label": "Vilka är vi?",
+        "url": "/teams/5"
+      },
+      {
+        "label": "Kibana",
+        "url": "http://kibana.svenskaspel.se"
+      }
+    ]
+  }
+}

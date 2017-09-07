@@ -1,6 +1,8 @@
 
-const colors = ['red', 'yellow', 'green'],
-      rooms = {};
+const path = require('path'),
+      colors = ['red', 'yellow', 'green'],
+      rooms = {},
+      configs = require(path.join(process.cwd(), 'rooms.json'));
 
 function Room() {
   let color = 'green',
@@ -42,6 +44,13 @@ module.exports = function(io) {
 
       //Send current state to newly connected client
       client.emit('state', rooms[room]);
+      if (configs[room]) {
+        console.log('Emit state for ' + room);
+        client.emit('config', configs[room]);
+      } else {
+        console.log('Emit default state for ' + room);
+        client.emit('config', configs['default']);
+      }
 
       console.log('Client joined ' + room);
     });
