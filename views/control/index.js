@@ -42,7 +42,6 @@ $(function() {
       newBtn.attr('data-url', config.iframes[i].url);
       newBtn.html(config.iframes[i].label);
       newBtn.removeClass('hide');
-
       newBtn.on('click', (e) => {
         socket.emit('iframe', $(e.target).data('url'));
       });
