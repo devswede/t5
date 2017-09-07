@@ -50,23 +50,27 @@ module.exports = function(io) {
 
     client.on('stoplight', function(color){
       for (let room in client.rooms) {
-        if (!rooms[room]) {
-          rooms[room] = new Room();
+        if (room !== client.id) {
+          if (!rooms[room]) {
+            rooms[room] = new Room();
+          }
+          rooms[room].color = color;
+          io.to(room).emit('stoplight', color);
+          console.log(client.id + ' sets color ' + color + ' for room ' + room);
         }
-        rooms[room].color = color;
-        io.to(room).emit('stoplight', color);
-        console.log(client.id + ' sets color ' + color + ' for room ' + room);
       }
     });
 
     client.on('iframe', function(url){
       for (let room in client.rooms) {
-        if (!rooms[room]) {
-          rooms[room] = new Room();
+        if (room !== client.id) {
+          if (!rooms[room]) {
+            rooms[room] = new Room();
+          }
+          rooms[room].url = url;
+          io.to(room).emit('iframe', url);
+          console.log(client.id + ' sets iframe ' + url + ' for room ' + room);
         }
-        rooms[room].url = url;
-        io.to(room).emit('iframe', url);
-        console.log(client.id + ' sets iframe ' + url + ' for room ' + room);
       }
     });
 
