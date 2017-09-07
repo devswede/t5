@@ -2,28 +2,28 @@
   "default": {
     "iframes": [
       {
-        "label": "SVT",
-        "url": "http://www.svt.se"
+        "label": "Startsidan",
+        "url": "/start"
       },
       {
-        "label": "Kibana",
-        "url": "http://kibana.svenskaspel.se"
+        "label": "Vilka är vi?",
+        "url": "/team"
       }
     ]
   },
   "team5": {
     "iframes": [
       {
-        "label": "SVT",
-        "url": "http://www.svt.se"
+        "label": "Startsidan",
+        "url": "/start"
       },
       {
         "label": "Vilka är vi?",
         "url": "/team"
       },
       {
-        "label": "Kibana",
-        "url": "http://kibana.svenskaspel.se"
+        "label": "Lite statistik",
+        "url": "/kibana"
       }
     ]
   }

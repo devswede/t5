@@ -48,3 +48,19 @@ API: /api/wake/:room
 API: /api/github/:room
 
 Emits a chat message on repo push
+
+
+## Led Colors
+
+Changes color on LED-list, supported colors currently:
+ * green
+ * yellow
+ * red
+ * black (turns LED off)
+ * rainbow (party mode)
+
+```javascript
+socket.on('color', function(url){
+  console.log(url);
+});
+```
