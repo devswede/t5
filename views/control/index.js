@@ -3,15 +3,29 @@ $(function() {
       colorBtns = $('.light-button'),
       dummyBtn = $('.btn-dummy'),
       urlBtnContainer = $('.url-btn-container'),
-      room = new URLSearchParams(window.location.search).get('room');
+      dimmer = $('.dimmer'),
+      room = new URLSearchParams(window.location.search).get('room'),
+      screenTimeout;
+
+  screenTimeout = setTimeout(onScreenTimeout, 15000);
 
   socket.on('connect', () => {
     socket.emit('join', room);
   });
 
+  socket.on('wake', () => {
+    dimmer.removeClass('on');
+    clearTimeout(screenTimeout);
+    setTimeout(onScreenTimeout, 15000);
+  });
+
   colorBtns.on('click', (e) => {
     socket.emit('stoplight', $(e.target).data('color'));
   });
+
+  function onScreenTimeout() {
+    dimmer.addClass('on');
+  }
 
   socket.on('config', (config) => {
     let newBtn, i;
