@@ -5,6 +5,7 @@ $(function() {
       greenLight = $('.green'),
       allLights = $('.light'),
       iframe = $('.display-iframe'),
+      chat = $('.js-chat'),
       room = new URLSearchParams(window.location.search).get('room');
 
   socket.on('connect', function() {
@@ -20,11 +21,16 @@ $(function() {
     updateQR();
   });
 
+  socket.on('chat', (msg) => {
+    chat.append('<p>' + msg + '</p>')
+  });
+
   function updateQR() {
     var controlUrl = window.location.origin + '/control?room=' + room;
     var qr = new QRious({
       element: document.getElementById('qr'),
-      value: controlUrl
+      value: controlUrl,
+      size: 80
     });
   }
 

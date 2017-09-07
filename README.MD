@@ -46,3 +46,5 @@ API: /api/wake/:room
 ## Web Hook
 
 API: /api/github/:room
+
+Emits a chat message on repo push
