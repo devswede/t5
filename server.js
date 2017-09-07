@@ -10,6 +10,8 @@ app.use('/stylesheets', express.static('./public/stylesheets'));
 app.use('/', router);
 app.use('/view/*', router);
 
+router.io = io;
+
 io.on('connection', require('./socket')(io));
 
 http.listen(3000, function () {

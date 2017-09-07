@@ -10,25 +10,33 @@ socket.on('connect', function() {
 });
 ```
 
-## Display
-
 GET /display?room=team5
 
+GET /control?room=team5
+
+## Stoplight
+
+Socket:
 ```javascript
+socket.to(room).emit('stoplight', 'red');
+
 socket.on('stoplight', function(color){
   console.log(color);
 });
+```
+
+API: /api/stoplight/:room/:color
+
+## IFrame
+
+```javascript
+socket.to(room).emit('iframe', 'http://www.svt.se');
+
 socket.on('iframe', function(url){
   console.log(url);
 });
 ```
 
-## Admin GUI
+## Wake
 
-GET /control?room=team5
-
-```javascript
-socket.to(room).emit('stoplight', 'red');
-
-socket.to(room).emit('iframe', 'http://www.svt.se');
-```
+API: /api/wake/:room
