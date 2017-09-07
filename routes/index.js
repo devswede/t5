@@ -23,7 +23,10 @@ router.get('/api/stoplight/:room/:color', (req, res, next) => {
 });
 
 router.post('/api/github/:room', (req, res, next) => {
-  router.io.to(req.params.room).emit('stoplight', 'yellow');
+  console.log('REQ: ' + req);
+  console.log('BODY: ' + req.json);
+  router.io.to(req.params.room).emit('chat', req);
+  //router.io.to(req.params.room).emit('stoplight', 'yellow');
   console.log(`API - GitHub web hook triggered`);
   res.sendStatus(200, 'OK');
 });
