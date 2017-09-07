@@ -21,3 +21,9 @@ var socket = io();
 socket.join('team5');
 socket.to('team5').emit('stoplight', 'red');
 ```
+
+```javascript
+var socket = io();
+socket.join('team5');
+socket.to('team5').emit('news', {tile: 'Senaste', body: 'Nothing'});
+```

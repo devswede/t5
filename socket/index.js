@@ -14,22 +14,25 @@ module.exports = function(io) {
 */
   return (client) => {
 
+    console.log('Client connected');
+
     client.on('event', function(data){});
 
     client.on('disconnect', function(){});
 
-    /*
-    client.on('join', function(room){
-      console('Client joined room ' + room);
-      socket.join(room);
+    client.on('join', (room) => {
+      client.join(room);
+      console.log('Client joined ' + room);
     });
-*/
 
-    client.on('stoplight', function(color, room){
-      if (room) {
+    client.on('leave', (room) => {
+      client.leave(room);
+      console.log('Client left ' + room);
+    });
+
+    client.on('stoplight', function(color){
+      for (let room in client.rooms) {
         io.to(room).emit('stoplight', color);
-      } else {
-        io.emit('stoplight', color);
       }
       console.log('New color: ' + color);
     });
