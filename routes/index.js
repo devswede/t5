@@ -11,7 +11,7 @@ import { ADD_ITEM } from '../views/src/actions/list_actions';
 let router = express.Router();
 
 router.get('/display', (req, res, next) => {
-	res.send('display');
+	res.sendFile('../views/display/index.html');
 });
 
 router.get('/', (req, res) => {
