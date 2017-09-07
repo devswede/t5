@@ -2,7 +2,10 @@ const express = require('express'),
 		  router = require ('./routes/index'),
 			app = express(),
 			http = require('http').Server(app),
+			bodyParser = require('body-parser'),
 		  io = require('socket.io')(http);
+
+		  app.use(bodyParser.json());
 
 app.use('/bin', express.static('./bin'));
 app.use('/stylesheets', express.static('./public/stylesheets'));
