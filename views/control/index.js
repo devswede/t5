@@ -5,30 +5,37 @@ $(function() {
       urlBtnContainer = $('.url-btn-container'),
       dimmer = $('.dimmer'),
       room = new URLSearchParams(window.location.search).get('room'),
-      screenTimeout;
+      screenTimeout,
+      screenTimeOutDelay = 45000;
 
-  screenTimeout = setTimeout(onScreenTimeout, 15000);
+  screenTimeout = setTimeout(onScreenTimeout, screenTimeOutDelay);
 
   socket.on('connect', () => {
     socket.emit('join', room);
   });
 
-  socket.on('wake', () => {
-    dimmer.removeClass('on');
-    clearTimeout(screenTimeout);
-    setTimeout(onScreenTimeout, 15000);
-  });
+  socket.on('wake', resetDimmerTimer);
 
   colorBtns.on('click', (e) => {
     socket.emit('stoplight', $(e.target).data('color'));
   });
 
+  dimmer.on('click', resetDimmerTimer);
+
   function onScreenTimeout() {
     dimmer.addClass('on');
   }
 
+  function resetDimmerTimer() {
+    dimmer.removeClass('on');
+    clearTimeout(screenTimeout);
+    setTimeout(onScreenTimeout, screenTimeOutDelay);
+  }
+
   socket.on('config', (config) => {
     let newBtn, i;
+
+    urlBtnContainer.empty();
 
     for(i = 0; i < config.iframes.length; i++) {
       newBtn = dummyBtn.clone();
