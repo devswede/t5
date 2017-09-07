@@ -13,13 +13,21 @@ module.exports = function(io) {
   }, 2000);
 
   return (client) => {
-    
+
     client.on('event', function(data){});
 
     client.on('disconnect', function(){});
 
-    client.on('stoplight', function(color){
-      io.emit('stoplight', color);
+    client.on('join', function(room){
+      socket.join(room);
+    });
+
+    client.on('stoplight', function(color, room){
+      if (room) {
+        io.to(room).emit('stoplight', color);
+      } else {
+        io.emit('stoplight', color);
+      }
       console.log('New color: ' + color);
     });
 
