@@ -41,3 +41,8 @@ socket.on('iframe', function(url){
 ## Wake
 
 API: /api/wake/:room
+
+
+## Web Hook
+
+API: /api/github/:room
