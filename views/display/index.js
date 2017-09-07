@@ -17,7 +17,15 @@ $(function() {
   socket.on('state', state => {
     updateIframeSource(state.url);
     updateLight(state.color);
+    updateQR();
   });
+
+  function updateQR() {
+    var qr = new QRious({
+      element: document.getElementById('qr'),
+      value: 'https://github.com/neocotic/qrious'
+    });
+  }
 
   function updateLight(color) {
     allLights.removeClass('light-up');
