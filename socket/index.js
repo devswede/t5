@@ -77,10 +77,10 @@ module.exports = function(io) {
           }
           rooms[room].messages.push(msg);
           io.to(room).emit('chat', msg);
-          io.to(room).emit('color', 'rainbow');
+          io.to(room).emit('color', 'flash');
           setTimeout(function() {
-            io.to(room).emit('color', 'black');
-          }, 1000)
+            io.to(room).emit('color', rooms[room].color);
+          }, 2000);
           console.log(client.id + ' chatted ' + msg + ' in room ' + room);
         }
       }
