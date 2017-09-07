@@ -2,6 +2,7 @@ $(function() {
   let socket = io(),
       colorBtns = $('.light-button'),
       dummyBtn = $('.btn-dummy'),
+      stoplight = $('.js-stoplight'),
       urlBtnContainer = $('.url-btn-container'),
       dimmer = $('.dimmer'),
       room = new URLSearchParams(window.location.search).get('room'),
@@ -37,12 +38,17 @@ $(function() {
 
     urlBtnContainer.empty();
 
+    if (config.stoplight) {
+      stoplight.removeClass('hide');
+    } else {
+      stoplight.addClass('hide');
+    }
+    
     for(i = 0; i < config.iframes.length; i++) {
       newBtn = dummyBtn.clone();
       newBtn.attr('data-url', config.iframes[i].url);
       newBtn.html(config.iframes[i].label);
       newBtn.removeClass('hide');
-
       newBtn.on('click', (e) => {
         socket.emit('iframe', $(e.target).data('url'));
       });

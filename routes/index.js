@@ -18,11 +18,6 @@ router.get('/start', (req,res,next) => {
   res.sendFile(__dirname + '/start.html');
 });
 
-router.get('/kibana', (req,res,next) => {
-  res.sendFile(__dirname + '/kibana.html');
-});
-
-
 router.get('/api/wake/:room', (req, res, next) => {
   router.io.to(req.params.room).emit('wake');
   console.log(`API - Wake to ${req.params.room}`);

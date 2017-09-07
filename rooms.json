@@ -2,12 +2,8 @@
   "default": {
     "iframes": [
       {
-        "label": "Startsidan",
-        "url": "/start"
-      },
-      {
-        "label": "Vilka är vi?",
-        "url": "/team"
+        "label": "svenskaspel.se",
+        "url": "https://www.svenskaspel.se"
       }
     ]
   },
@@ -23,8 +19,25 @@
       },
       {
         "label": "Lite statistik",
-        "url": "/kibana"
+        "url": "/images/kibana.png"
       }
     ]
+  },
+  "in5": {
+    "iframes": [
+      {
+        "label": "Startsidan",
+        "url": "/insidan"
+      },
+      {
+        "label": "Trinidad Felkoll",
+        "url": "https://kibana.svenskaspel.se/#/dashboard/elasticsearch/Trinidad-felkoll"
+      },
+      {
+        "label": "Trinidad Surveillance",
+        "ur": "https://grafana.svenskaspel.se/dashboard/db/trinidad-surveillance"
+      }
+    ],
+    "stoplight": true
   }
 }

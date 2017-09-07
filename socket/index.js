@@ -29,16 +29,21 @@ module.exports = function(io) {
       if (!rooms[room]) {
         console.log('Room created: ' + room);
         rooms[room] = new Room();
+        if (configs[room]) {
+          rooms[room].url = configs[room].iframes[0].url;
+        }
       }
       client.join(room);
       console.log(client.id + ' joined ' + room);
 
       //Send current state to newly connected client
-      client.emit('state', rooms[room]);
       if (configs[room]) {
+        client.emit('state', rooms[room]);
         client.emit('config', configs[room]);
       } else {
+        client.emit('state', rooms[room]);
         client.emit('config', configs['default']);
+
       }
 
     });
