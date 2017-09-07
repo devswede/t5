@@ -6,6 +6,7 @@ $(function() {
       urlBtnContainer = $('.url-btn-container'),
       dimmer = $('.dimmer'),
       room = new URLSearchParams(window.location.search).get('room'),
+      msgForm = $('.js-msg-form'),
       screenTimeout,
       screenTimeOutDelay = 45000;
 
@@ -19,6 +20,13 @@ $(function() {
 
   colorBtns.on('click', (e) => {
     socket.emit('stoplight', $(e.target).data('color'));
+  });
+
+  msgForm.on('submit', function(e) {
+    var msg = $('.js-chat-msg')[0].value;
+    socket.emit('chat', msg);
+    $('.js-chat-msg')[0].value = '';
+    e.preventDefault();
   });
 
   dimmer.on('click', resetDimmerTimer);
@@ -43,7 +51,7 @@ $(function() {
     } else {
       stoplight.addClass('hide');
     }
-    
+
     for(i = 0; i < config.iframes.length; i++) {
       newBtn = dummyBtn.clone();
       newBtn.attr('data-url', config.iframes[i].url);

@@ -10,7 +10,8 @@ function Room() {
 
   return {
     color: color,
-    url: url
+    url: url,
+    messages: []
   };
 };
 
@@ -63,6 +64,20 @@ module.exports = function(io) {
           io.to(room).emit('stoplight', color);
           io.to(room).emit('color', color);
           console.log(client.id + ' sets color ' + color + ' for room ' + room);
+        }
+      }
+    });
+
+    //router.io.to(req.params.room).emit('chat', msg);
+    client.on('chat', function(msg){
+      for (let room in client.rooms) {
+        if (room !== client.id) {
+          if (!rooms[room]) {
+            rooms[room] = new Room();
+          }
+          rooms[room].messages.push(msg);
+          io.to(room).emit('chat', msg);
+          console.log(client.id + ' chatted ' + msg + ' in room ' + room);
         }
       }
     });
