@@ -5,8 +5,10 @@ const express = require('express'),
 			bodyParser = require('body-parser'),
 		  io = require('socket.io')(http);
 
-		  app.use(bodyParser.json());
+app.set('view engine', 'hbs');
 
+//Middleware
+app.use(bodyParser.json());
 app.use('/bin', express.static('./bin'));
 app.use('/stylesheets', express.static('./public/stylesheets'));
 app.use('/images', express.static('./public/images'));
