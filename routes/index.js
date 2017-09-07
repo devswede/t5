@@ -22,4 +22,11 @@ router.get('/api/stoplight/:room/:color', (req, res, next) => {
   res.sendStatus(200, 'OK');
 });
 
+router.post('/api/github/:room', (req, res, next) => {
+  router.io.to(req.params.room).emit('stoplight', 'yellow');
+  console.log(`API - GitHub web hook triggered`);
+  res.sendStatus(200, 'OK');
+});
+
+
 module.exports = router;
