@@ -8,7 +8,11 @@ $(function() {
   });
 
   socket.on('state', state => {
-
+    if (state.messages) {
+      for (var i = 0; i < state.messages.length; i++) {
+        chat.append('<p>' + state.messages[i] + '</p>')
+      }
+    }
   });
 
   socket.on('chat', msg => {
