@@ -21,6 +21,6 @@ $(function() {
         voice = voice || synth.getVoices().find(voice => { return voice.lang === 'sv-SE'; });
     synthMsg.voice = voice;
     synth.speak(synthMsg);
-    chat.append('<p>' + msg + '</p>')
+    chat.prepend('<p>' + msg + '</p>')
   });
 }());
