@@ -40,6 +40,8 @@ socket.on('iframe', function(url){
 
 ## Wake
 
+Motion sensor wake up
+
 API: /api/wake/:room
 
 

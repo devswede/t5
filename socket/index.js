@@ -69,6 +69,12 @@ module.exports = function(io) {
           rooms[room].color = color;
           io.to(room).emit('stoplight', color);
           io.to(room).emit('color', color);
+          if (color === 'green') {
+            setTimeout(function() {
+              rooms[room].color = 'black';
+              io.to(room).emit('color', rooms[room].color);
+            }, 20000);
+          }
           console.log(client.id + ' sets color ' + color + ' for room ' + room);
         }
       }
