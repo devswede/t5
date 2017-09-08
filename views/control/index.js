@@ -62,9 +62,7 @@ $(function() {
 
     if (config.chat) {
       messages.removeClass('hide');
-      $(function(){
-        $('#keyboard').keyboard();
-      });
+      $('#keyboard').keyboard();
     } else {
       messages.addClass('hide');
     }
