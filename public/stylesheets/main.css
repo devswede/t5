@@ -197,3 +197,8 @@ body {
 .insidan .default-top {
     padding: 20px;
 }
+
+.js-chat {
+    overflow: scroll;
+    max-height: 100%;
+}

@@ -48,7 +48,7 @@ $(function() {
   function resetDimmerTimer() {
     dimmer.removeClass('on');
     clearTimeout(screenTimeout);
-    setTimeout(onScreenTimeout, screenTimeOutDelay);
+    screenTimeout = setTimeout(onScreenTimeout, screenTimeOutDelay);
   }
 
   socket.on('config', (config) => {
