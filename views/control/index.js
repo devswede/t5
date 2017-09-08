@@ -61,7 +61,7 @@ $(function() {
         at2: 'center bottom'
       },
       reposition : true,
-      usePreview : true,
+      usePreview : false,
       alwaysOpen : false,
       noFocus : false,
       userClosed : false,
