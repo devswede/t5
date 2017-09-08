@@ -141,12 +141,18 @@ body {
 
 .start .default-left {
     background-image: url('../images/sport.jpg');
-    background-size: cover
+    background-size: cover;
 }
 
 .insidan .default-left {
     background-image: url('../images/kibana.png');
-    background-size: cover
+    background-size: contain;
+}
+
+.insidan .default-bottom {
+    background-image: url('../images/rally.png');
+    background-size: cover;
+    border: 1px solid #999;
 }
 
 .start .default-bottom {
@@ -160,10 +166,10 @@ body {
 
 .default-bottom,
 .default-top {
-    height: 50vh;
+    height: 49vh;
 }
 
-.start .default-top {
+.default-top {
     padding: 20px;
     margin-bottom: 20px;
     background: #3E606F;
@@ -186,4 +192,8 @@ body {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+}
+
+.insidan .default-top {
+    padding: 20px;
 }
