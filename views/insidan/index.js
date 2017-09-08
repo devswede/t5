@@ -18,7 +18,7 @@ $(function() {
   });
 
   socket.on('chat', msg => {
-    let synthMsg = new SpeechSynthesisUtterance(msg);
+    let synthMsg = new SpeechSynthesisUtterance('Nytt meddelande. ' + msg);
     synthMsg.voice = voice;
     synth.speak(synthMsg);
     chat.append('<p>' + msg + '</p>')
