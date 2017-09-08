@@ -1,3 +1,4 @@
+
 $(function() {
   let socket = io(),
       colorBtns = $('.light-button'),
@@ -61,6 +62,7 @@ $(function() {
 
     if (config.chat) {
       messages.removeClass('hide');
+      $('#keyboard').keyboard();
     } else {
       messages.addClass('hide');
     }
