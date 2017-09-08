@@ -1,19 +1,27 @@
 # Team Dash
 
-## Joining a dash
+
+# Avaialable screens
+
+## Dash screen
+
+GET /display?screen=team5
+
+## Constroller screen
+
+GET /control?screen=team5
+
+
+## Joining as a team screen
 
 ```javascript
 var socket = io(),
-    room = 'team5';
+    screen = 'team5';
 socket.on('connect', function() {
   socket.on('state', state); //Current room state
-  socket.join(room);
+  socket.join(screen);
 });
 ```
-
-GET /display?room=team5
-
-GET /control?room=team5
 
 ## Stoplight
 
