@@ -21,7 +21,8 @@
       },
       {
         "label": "Lite statistik",
-        "url": "/images/kibana.png"
+        "url": "https://kibana.svenskaspel.se/#/dashboard/elasticsearch/HZ%20-%20Devices",
+        "url2": "/images/kibana.png"
       }
     ],
     "chat": true
