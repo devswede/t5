@@ -50,6 +50,7 @@ router.get('/api/stoplight/:room/:color', (req, res, next) => {
 router.post('/api/github/:room', (req, res, next) => {
   let msg = 'GitHub: ' + req.body.pusher.name + ' pushed to ' + req.body.repository.name;
   router.io.to(req.params.room).emit('chat', msg);
+  router.io.to(req.params.room).emit('color', 'flash');
   console.log(`API - GitHub web hook triggered (${msg})`);
   res.sendStatus(200, 'OK');
 });
