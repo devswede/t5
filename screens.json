@@ -35,6 +35,10 @@
         "url": "/insidan?room=team5"
       },
       {
+        "label": "Morning Stand up",
+        "url": "https://rally1.rallydev.com/#/31588915739d/iterationstatus?expandDashboard=true"
+      },
+      {
         "label": "Trinidad Felkoll",
         "url": "https://kibana.svenskaspel.se/#/dashboard/elasticsearch/Trinidad-felkoll"
       },
