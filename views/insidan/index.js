@@ -2,8 +2,7 @@ $(function() {
   let socket = io(),
       chat = $('.js-chat'),
       room = new URLSearchParams(window.location.search).get('room'),
-      synth = window.speechSynthesis,
-      voice = synth.getVoices().find(voice => { return voice.lang === 'sv-SE'; });
+      synth = window.speechSynthesis;
 
   socket.on('connect', function() {
     socket.emit('join', room);
@@ -18,7 +17,8 @@ $(function() {
   });
 
   socket.on('chat', msg => {
-    let synthMsg = new SpeechSynthesisUtterance('Nytt meddelande. ' + msg);
+    let synthMsg = new SpeechSynthesisUtterance('Nytt meddelande. ' + msg),
+        voice = voice || synth.getVoices().find(voice => { return voice.lang === 'sv-SE'; });
     synthMsg.voice = voice;
     synth.speak(synthMsg);
     chat.append('<p>' + msg + '</p>')
