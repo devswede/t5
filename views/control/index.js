@@ -18,7 +18,7 @@ $(function() {
     document.title = 'Styr intern skärm - Team 5'
   }
 
-  $('body').on('click', resetDimmerTimer);
+  $(document).mousemove(resetDimmerTimer);
 
   screenTimeout = setTimeout(onScreenTimeout, screenTimeOutDelay);
 
