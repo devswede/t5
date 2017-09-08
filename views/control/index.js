@@ -18,6 +18,8 @@ $(function() {
     document.title = 'Styr intern skärm - Team 5'
   }
 
+  $('body').on('click', resetDimmerTimer);
+
   screenTimeout = setTimeout(onScreenTimeout, screenTimeOutDelay);
 
   socket.on('connect', () => {
