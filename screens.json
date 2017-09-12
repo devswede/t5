@@ -29,6 +29,8 @@
   },
   "in5": {
     "room": "team5",
+    "stoplight": true,
+    "chat": false,
     "iframes": [
       {
         "label": "Startsidan",
@@ -46,7 +48,6 @@
         "label": "Trinidad Surveillance",
         "url": "https://grafana.svenskaspel.se/dashboard/db/trinidad-surveillance"
       }
-    ],
-    "stoplight": true
+    ]
   }
 }
