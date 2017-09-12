@@ -49,5 +49,28 @@
         "url": "https://grafana.svenskaspel.se/dashboard/db/trinidad-surveillance"
       }
     ]
+  },
+  "platform_in": {
+    "room": "platform",
+    "stoplight": true,
+    "chat": false,
+    "iframes": [
+      {
+        "label": "Startsidan",
+        "url": "/platform?room=team5"
+      },
+      {
+        "label": "Morning Stand up",
+        "url": "https://rally1.rallydev.com/#/31588915739d/iterationstatus"
+      },
+      {
+        "label": "Trinidad Felkoll",
+        "url": "https://kibana.svenskaspel.se/#/dashboard/elasticsearch/Trinidad-felkoll"
+      },
+      {
+        "label": "Trinidad Surveillance",
+        "url": "https://grafana.svenskaspel.se/dashboard/db/trinidad-surveillance"
+      }
+    ]
   }
 }

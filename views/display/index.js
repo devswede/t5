@@ -5,14 +5,20 @@ $(function() {
       allLights = $('.light'),
       iframe = $('.display-iframe'),
       chat = $('.js-chat'),
-      screen = new URLSearchParams(window.location.search).get('screen');
+      screen = new URLSearchParams(window.location.search).get('screen'),
+      pageTitle = 'Display - Woooowww!';
 
 
   if (screen === 'team5') {
-    document.title = 'Team 5 - Extern'
+    pageTitle = 'Team 5 - Extern'
   } else if (screen === 'in5') {
-    document.title = 'Team 5 - Intern'
+    pageTitle = 'Team 5 - Intern'
+  } else if (screen === 'platform_in') {
+    pageTitle = 'Trinidad Plattform - Intern'
   }
+  document.title = pageTitle;
+
+  $('.js-team-name')[0].innerText = pageTitle;
 
   socket.on('connect', function() {
     socket.emit('join', screen);

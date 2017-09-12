@@ -33,6 +33,13 @@ router.get('/insidan', (req,res,next) => {
 });
 
 /*
+ Intern skärm Plattform
+ */
+router.get('/platform', (req,res,next) => {
+  res.render('frames/platform');
+});
+
+/*
  API's
  */
 router.get('/api/wake/:room', (req, res, next) => {
