@@ -53,11 +53,11 @@
   "platform_in": {
     "room": "platform",
     "stoplight": true,
-    "chat": false,
+    "chat": true,
     "iframes": [
       {
         "label": "Startsidan",
-        "url": "/platform?room=team5"
+        "url": "/platform?room=platform_in"
       },
       {
         "label": "Morning Stand up",
