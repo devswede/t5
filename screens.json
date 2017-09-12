@@ -44,7 +44,7 @@
       },
       {
         "label": "Trinidad Surveillance",
-        "ur": "https://grafana.svenskaspel.se/dashboard/db/trinidad-surveillance"
+        "url": "https://grafana.svenskaspel.se/dashboard/db/trinidad-surveillance"
       }
     ],
     "stoplight": true
