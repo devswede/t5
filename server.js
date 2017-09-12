@@ -1,3 +1,5 @@
+console.log('Starting.. Cwd:' +  process.cwd());
+
 const express = require('express'),
 		  router = require ('./routes/index'),
 			app = express(),
